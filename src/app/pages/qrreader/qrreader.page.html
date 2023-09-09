@@ -1,26 +1,22 @@
-<ion-header>
-  <ion-toolbar color="primary" class="ion-text-center">
-    <ion-title>Código QR App</ion-title>
-  </ion-toolbar>
-</ion-header>
-<br>
-
 <ion-content>
+  <ion-title class="ion-padding-top ion-text-center">
+    <img src="assets/img/DUOC.jpg" alt="">
+  </ion-title>
+  <ion-card class="ion-text-center ion-padding-vertical">
+    <ion-button *ngIf="!escaneando" (click)="comenzarEscaneoQR()" expand="full" shape="round">
+      <ion-icon slot="start" name="videocam-outline"></ion-icon>
+      Comenzar Escaneo de QR
+    </ion-button>
 
-  <ion-button *ngIf="!escaneando" (click)="comenzarEscaneoQR()" expand="full" shape="round">
-    <ion-icon slot="start" name="videocam-outline"></ion-icon>
-    Comenzar Escaneo de QR
-  </ion-button>
+    <ion-button *ngIf="escaneando" (click)="detenerEscaneoQR()" expand="full" shape="round">
+      <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
+      Detener escaneo de QR
+    </ion-button>
 
-  <ion-button *ngIf="escaneando" (click)="detenerEscaneoQR()" expand="full" shape="round">
-    <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
-    Detener escaneo de QR
-  </ion-button>
+    <video #video [hidden]="!escaneando" width="100%"></video>
+    <canvas #canvas hidden></canvas>
 
-  <video #video [hidden]="!escaneando" width="100%"></video>
-  <canvas #canvas hidden></canvas>
 
-  <ion-card>
     <ion-card-header>
       <ion-card-title>Los datos del Código QR son los siguientes:</ion-card-title>
     </ion-card-header>
@@ -32,8 +28,13 @@
         Sin información
       </h2>
     </ion-card-content>
+
+    <ion-label>
+      <br>
+      <a routerLink="/ingreso">Cerrar sesion</a>
+    </ion-label>
   </ion-card>
-  
+
 </ion-content>
 
 <ion-footer>

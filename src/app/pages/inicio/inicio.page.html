@@ -9,7 +9,7 @@
   <ion-title class="ion-padding-top ion-text-center">
     <img src="assets/img/DUOC.jpg" alt="">
   </ion-title>
-  
+
   <ion-title class="ion-padding-top">
     <ion-label class="ion-text-center">
       <h1>¡Bienvenido!</h1>
@@ -17,67 +17,73 @@
       <h4>Información Adicional</h4>
     </ion-label>
   </ion-title>
-  
-  <!-- Comienza el Formulario -->
-  <form>
-    <ion-list>
-      <!-- Nombre del usuario -->
-      <ion-item #itemNombre>
-        <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
-          [(ngModel)]="usuario.nombre"></ion-input>
-      </ion-item>
+  <ion-card class="ion-text-center ion-padding-vertical">
+    <!-- Comienza el Formulario -->
+    <form>
+      <ion-list>
+        <!-- Nombre del usuario -->
+        <ion-item #itemNombre>
+          <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text"
+            [(ngModel)]="usuario.nombre"></ion-input>
+        </ion-item>
 
-      <!-- Apellido del usuario -->
-      <ion-item #itemApellido>
-        <ion-input name="apellido" label="Apellido" labelPlacement="floating" type="text" 
-          [(ngModel)]="usuario.apellido"></ion-input>
-      </ion-item>
+        <!-- Apellido del usuario -->
+        <ion-item #itemApellido>
+          <ion-input name="apellido" label="Apellido" labelPlacement="floating" type="text"
+            [(ngModel)]="usuario.apellido"></ion-input>
+        </ion-item>
 
-      <!-- Nivel educacional del usuario -->
-      <ion-item #itemEducacion>
-        <ion-select 
-            name="nivelEducacional" label="Educación" labelPlacement="floating"
+        <!-- Nivel educacional del usuario -->
+        <ion-item #itemEducacion>
+          <ion-select name="nivelEducacional" label="Educación" labelPlacement="floating"
             [(ngModel)]="idNivelEducacional" (ngModelChange)="cambiarNivelEducacional()">
-          <ion-select-option *ngFor="let nived of nivelesEducacionales" [value]="nived.id">
-            {{ nived.nombre }}
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
+            <ion-select-option *ngFor="let nived of nivelesEducacionales" [value]="nived.id">
+              {{ nived.nombre }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
 
-      <!-- Fecha de nacimiento del usuario -->
-      <ion-item #itemFechaNacimiento>
-        <mat-form-field slot="start" [ngClass]="'fecha'">
-          <mat-label>Nacimiento</mat-label>
-          <input matInput name="date" [matDatepicker]="fecha" [(ngModel)]="usuario.fechaNacimiento" readonly>
-          <mat-datepicker-toggle matSuffix [for]="fecha"></mat-datepicker-toggle>
-          <mat-datepicker #fecha></mat-datepicker>
-        </mat-form-field>
-      </ion-item>
-    </ion-list>
+        <!-- Fecha de nacimiento del usuario -->
+        <ion-item #itemFechaNacimiento>
+          <mat-form-field slot="start" [ngClass]="'fecha'">
+            <mat-label>Nacimiento</mat-label>
+            <input matInput name="date" [matDatepicker]="fecha" [(ngModel)]="usuario.fechaNacimiento" readonly>
+            <mat-datepicker-toggle matSuffix [for]="fecha"></mat-datepicker-toggle>
+            <mat-datepicker #fecha></mat-datepicker>
+          </mat-form-field>
+        </ion-item>
+      </ion-list>
 
-    <!-- Area de botones -->
-    <ion-grid>
-      <ion-row>
-        <ion-col col-6>
-          <ion-button shape="block" (click)="limpiarFormulario()"> Limpiar </ion-button>
-        </ion-col>
-        <ion-col col-6>
-          <ion-button shape="block" (click)="mostrarDatosPersona()"> Mostrar </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <ion-grid>
-      <ion-row>
-        <ion-col col-12>
-          <ion-button shape="block" (click)="escanear()"> Escanear QR </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+      <!-- Area de botones -->
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <ion-button shape="block" (click)="limpiarFormulario()"> Limpiar </ion-button>
+          </ion-col>
+          <ion-col col-6>
+            <ion-button shape="block" (click)="mostrarDatosPersona()"> Mostrar </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12>
+            <ion-button shape="block" (click)="escanear()"> Escanear QR </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
 
-    
-  
-  </form>
-  <!-- Termina el Formulario -->
+    </form>
+    <!-- Termina el Formulario -->
+
+
+    <ion-label>
+      <br>
+      <a routerLink="/ingreso">Cerrar sesion</a>
+    </ion-label>
+  </ion-card>
+
+
 </ion-content>
 <!-- Termina el content -->
 

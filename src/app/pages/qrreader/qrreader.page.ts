@@ -2,6 +2,7 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { Asistencia } from 'src/app/model/asistencia';
 import jsQR, { QRCode } from 'jsqr';
+import { Router, NavigationExtras } from '@angular/router'; // Permite navegar y pasar parámetros extra entre páginas
 
 @Component({
   selector: 'app-qrreader',
@@ -20,9 +21,20 @@ export class QrreaderPage implements OnInit {
   public escaneando = false;
   public datosQR: string = '';
 
+  public sede: string = '';
+  public idAsignatura: string = '';
+  public seccion: string = '';
+  public nombreAsignatura: string = '';
+  public nombreProfesor: string = '';
+  public dia: string = '';
+  public bloqueInicio: string = '';
+  public bloqueTermino: string = '';
+  public horaInicio: string = '';
+  public horaFin: string = '';
+
   private mediaStream: MediaStream | null = null;
 
-  public constructor() {
+  public constructor(private router: Router) {
   }
 
   public ngOnInit(): void {
@@ -103,7 +115,36 @@ export class QrreaderPage implements OnInit {
 
   public mostrarDatosQROrdenados(datosQR: string): void {
     this.datosQR = datosQR;
+    
+
     const objetoDatosQR = JSON.parse(datosQR);
+    this.sede = objetoDatosQR.sede;
+    this.idAsignatura = objetoDatosQR.idAsignatura;
+    this.seccion = objetoDatosQR.seccion;
+    this.nombreAsignatura = objetoDatosQR.nombreAsignatura;
+    this.nombreProfesor = objetoDatosQR.nombreProfesor;
+    this.dia = objetoDatosQR.dia;
+    this.bloqueInicio = objetoDatosQR.bloqueInicio;
+    this.bloqueTermino = objetoDatosQR.bloqueTermino;
+    this.horaInicio = objetoDatosQR.horaInicio;
+    this.horaFin = objetoDatosQR.horaFin;
+
+    const navigationExtras: NavigationExtras = {
+      state: {
+        sede: this.sede,
+        idAsignatura: this.idAsignatura,
+        seccion: this.seccion,
+        nombreAsignatura: this.nombreAsignatura,
+        nombreProfesor: this.nombreProfesor,
+        dia: this.dia,
+        bloqueInicio: this.bloqueInicio,
+        bloqueTermino: this.bloqueTermino,
+        horaInicio: this.horaInicio,
+        horaFin: this.horaFin
+      }
+    };
+    this.router.navigate(['/miclase'], navigationExtras)
+
     // ----------------------------------
     // TAREA PARA COMPLETAR POR EL ALUMNO
     // ----------------------------------

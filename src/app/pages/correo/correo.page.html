@@ -1,5 +1,5 @@
 <ion-content>
-  
+
   <!-- 
     Se establece un título que este separado de <ion-content>
     mediante el class ion-padding-top
@@ -11,7 +11,7 @@
   <ion-title class="ion-padding-top ion-text-center">
     <img src="assets/img/DUOC.jpg" alt="">
   </ion-title>
-  
+
   <!--
     Se genera una división donde estará el contenido del login,
     para esto se utilizara ion-padding-vertical que aplica un
@@ -19,7 +19,7 @@
     Ver: https://ionicframework.com/docs/layout/css-utilities#element-padding
   -->
   <div class="ion-padding-vertical">
-    
+
     <!-- Se establece un card que contendrá un título y un contenido -->
     <ion-card class="ion-text-center ion-padding-vertical">
 
@@ -34,19 +34,26 @@
       <form>
         <!-- Contenido del card -->
         <ion-card-content>
-          
+
           <!-- Item de correo -->
           <ion-item>
             <!-- Usamos ngModel para indicarle al input que se ligará con la propiedad "usuario.correo" -->
-            <ion-input name="correo" label="Correo" labelPlacement="floating" type="text" [(ngModel)]="correo"></ion-input>
+            <ion-input name="correo" label="Correo" labelPlacement="floating" type="text"
+              [(ngModel)]="correo"></ion-input>
           </ion-item>
 
           <!-- Se debe usar (click) para enlazar con el método de la clase en typescript -->
-          <ion-button shape="block" (click)="recuperar()">Recuperar contraseña</ion-button> 
+          <ion-button shape="block" (click)="recuperar()">Recuperar contraseña</ion-button>
 
         </ion-card-content>
       </form>
+
+      <ion-label>
+        <br>
+        <a routerLink="/ingreso">Iniciar sesion</a>
+      </ion-label>
+
     </ion-card>
   </div>
-  
+
 </ion-content>

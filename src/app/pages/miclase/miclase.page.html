@@ -1,12 +1,75 @@
-
 <ion-content [fullscreen]="true">
   <ion-title class="ion-padding-top ion-text-center">
     <img src="assets/img/DUOC.jpg" alt="">
   </ion-title>
-  
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">miclase</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <ion-label class="ion-text-center">
+    <h1>Datos de la asignatura</h1>
+  </ion-label>
+
+  <ion-card class="ion-text-center ion-padding-vertical">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">miclase</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-item #itemSede>
+      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
+      [(ngModel)]="sede"></ion-input>
+    </ion-item>
+
+    <ion-item #itemSigla>
+      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
+      [(ngModel)]="idAsignatura"></ion-input>
+    </ion-item>
+
+    <ion-item #itemSeccion>
+      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
+      [(ngModel)]="seccion"></ion-input>
+    </ion-item>
+
+    <ion-item #itemNomAsig>
+      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
+      [(ngModel)]="nombreAsignatura"></ion-input>
+    </ion-item>
+
+    <ion-item #itemNomProf>
+      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
+      [(ngModel)]="nombreProfesor"></ion-input>
+    </ion-item>
+
+    <ion-item #itemDia>
+      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
+      [(ngModel)]="dia"></ion-input>
+    </ion-item>
+
+    <ion-item #itemBloIni>
+      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
+      [(ngModel)]="bloqueInicio"></ion-input>
+    </ion-item>
+
+    <ion-item #itemBloTer>
+      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
+      [(ngModel)]="bloqueTermino"></ion-input>
+    </ion-item>
+
+    <ion-item #itemHoraIni>
+      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
+      [(ngModel)]="horaInicio"></ion-input>
+    </ion-item>
+
+    <ion-item #itemHoraTer>
+      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
+      [(ngModel)]="horaFin"></ion-input>
+    </ion-item>
+    
+    <ion-label>
+      <br>
+      <a routerLink="/ingreso">Cerrar sesion</a>
+    </ion-label>
+
+  </ion-card>
+
+
 </ion-content>
