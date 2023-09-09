@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { HomePage } from './home.page';
-import { HomePageRoutingModule } from './home-routing.module';
+import { InicioPage } from './inicio.page';
+import { InicioPageRoutingModule } from './inicio-routing.module';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 
@@ -12,11 +12,11 @@ import { MatInputModule } from '@angular/material/input';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
+    InicioPageRoutingModule,
     // CGV: Módulos de Angular Material
     MatDatepickerModule,
     MatInputModule
   ],
-  declarations: [HomePage]
+  declarations: [InicioPage]
 })
-export class HomePageModule {}
+export class InicioPageModule {}
