@@ -11,6 +11,7 @@ import { Usuario } from 'src/app/model/usuario';
 export class PreguntaPage implements OnInit {
 
   public usuario: Usuario;
+  public respuesta: string = ''; 
 
   constructor(private route: ActivatedRoute, private router: Router) {
     this.usuario = new Usuario('', '', '', '', '', '', 0, null);
@@ -28,5 +29,24 @@ export class PreguntaPage implements OnInit {
       }
       this.router.navigate(['/login']);
     });
+  }
+
+  public recuperarRespuesta(): void {
+    if (this.usuario) {
+      // Trae al usuario en base a la respuesta
+      const usu: Usuario | undefined = this.usuario.buscarRespuesta(this.usuario.correo, this.respuesta);
+
+      if (usu) {
+        const navigationExtras: NavigationExtras = {
+          state: {
+            usuario: usu
+          }
+        };
+        this.router.navigate(['/correcto'], navigationExtras)
+      }
+      else {
+        this.router.navigate(['/incorrecto'])
+      }
+    }
   }
 }
