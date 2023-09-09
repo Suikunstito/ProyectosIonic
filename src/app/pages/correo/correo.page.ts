@@ -11,6 +11,7 @@ import { Usuario } from 'src/app/model/usuario';
 export class CorreoPage implements OnInit {
 
   public usuario: Usuario;
+  public correo: string = '';
 
   constructor(private router: Router, private toastController: ToastController) {
     this.usuario = new Usuario('', '', '', '', '', '', 0, null)
@@ -34,7 +35,7 @@ export class CorreoPage implements OnInit {
 
   public recuperar(): void {
     if (this.usuario) {
-      const usu: Usuario | undefined = this.usuario.buscarCorreoValido(this.usuario.correo);
+      const usu: Usuario | undefined = this.usuario.buscarCorreoValido(this.correo);
 
       if (usu) {
         const navigationExtras: NavigationExtras = {

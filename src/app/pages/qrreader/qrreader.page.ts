@@ -20,10 +20,17 @@ export class QrreaderPage implements OnInit {
   public escaneando = false;
   public datosQR: string = '';
 
+  private mediaStream: MediaStream | null = null;
+
   public constructor() {
   }
 
   public ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    // Detiene la camara al salir de la pagina
+    this.detenerCamara();
   }
 
   // Se va a solicitar el uso de la cámara, por medio de "navigator.mediaDevices.getUserMedia".
@@ -43,6 +50,7 @@ export class QrreaderPage implements OnInit {
       video: {facingMode: 'environment'}
     });
     this.video.nativeElement.srcObject = mediaProvider;
+    this.mediaStream = mediaProvider;
     this.video.nativeElement.setAttribute('playsinline', 'true');
     this.video.nativeElement.play();
     this.escaneando = true;
@@ -108,6 +116,7 @@ export class QrreaderPage implements OnInit {
     // 2) Hacer una interpolación entre las propiedades 
     //    de "this.asistencia" y la página HTML, de modo
     //    que la página muestre de manera ordenada estos datos.
+    this.detenerCamara();
   }
 
   // Si la propiedad this.escaneando cambia a false, entonces la función
@@ -115,6 +124,15 @@ export class QrreaderPage implements OnInit {
 
   public detenerEscaneoQR(): void {
     this.escaneando = false;
+    this.detenerCamara();
+  }
+
+  private detenerCamara(): void {
+    if (this.mediaStream) {
+      this.mediaStream.getTracks().forEach((track) => {
+        track.stop();
+      });
+    }
   }
 
 }
