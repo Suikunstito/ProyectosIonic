@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary" class="ion-text-center">
+    <ion-title>Código QR App</ion-title>
+  </ion-toolbar>
+</ion-header>
+<br>
+
+<ion-content>
+
+  <ion-button *ngIf="!escaneando" (click)="comenzarEscaneoQR()" expand="full" shape="round">
+    <ion-icon slot="start" name="videocam-outline"></ion-icon>
+    Comenzar Escaneo de QR
+  </ion-button>
+
+  <ion-button *ngIf="escaneando" (click)="detenerEscaneoQR()" expand="full" shape="round">
+    <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
+    Detener escaneo de QR
+  </ion-button>
+
+  <video #video [hidden]="!escaneando" width="100%"></video>
+  <canvas #canvas hidden></canvas>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Los datos del Código QR son los siguientes:</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="borde">
+      <h2 *ngIf="datosQR">
+        {{ datosQR }}
+      </h2>
+      <h2 *ngIf="!datosQR">
+        Sin información
+      </h2>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-left ion-text">
+      App desarrollada por Cristián Gómez Vega
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

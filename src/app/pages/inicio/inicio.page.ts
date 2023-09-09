@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AnimationController} from '@ionic/angular';
 import { NivelEducacional } from 'src/app/model/nivel-educacional';
@@ -132,5 +132,8 @@ export class InicioPage implements OnInit, AfterViewInit {
     });
 
     await alert.present();
+  }
+  public escanear(): void {
+    this.router.navigate(['/qrreader']); // Navegamos hacia el Home y enviamos la información extra
   }
 }

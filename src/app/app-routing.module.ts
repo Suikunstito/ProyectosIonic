@@ -35,6 +35,15 @@ const routes: Routes = [
     path: 'miclase',
     loadChildren: () => import('./pages/miclase/miclase.module').then( m => m.MiclasePageModule)
   },
+  {
+    path: '',
+    redirectTo: 'qrreader',
+    pathMatch: 'full'
+  },
+  {
+    path: 'qrreader',
+    loadChildren: () => import('./pages/qrreader/qrreader.module').then( m => m.QrreaderPageModule)
+  },
 
 ];
 
