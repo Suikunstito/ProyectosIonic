@@ -6,12 +6,12 @@ import { NivelEducacional } from 'src/app/model/nivel-educacional';
 import { Usuario } from 'src/app/model/usuario';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-inicio',
+  templateUrl: 'inicio.page.html',
+  styleUrls: ['inicio.page.scss'],
 })
 
-export class HomePage implements OnInit, AfterViewInit {
+export class InicioPage implements OnInit, AfterViewInit {
 
   @ViewChild('titulo', { read: ElementRef }) itemTitulo!: ElementRef;
   @ViewChild('itemNombre', { read: ElementRef }) itemNombre!: ElementRef;
@@ -48,7 +48,7 @@ export class HomePage implements OnInit, AfterViewInit {
         }
       }
       // Si no vienen datos extra desde la página anterior, quiere decir que el usuario
-      // intentó entrar directamente a la página home sin pasar por el login,
+      // intentó entrar directamente a la página inicio sin pasar por el login,
       // de modo que el sistema debe enviarlo al login para que inicie sesión.
       this.router.navigate(['/login']);
 

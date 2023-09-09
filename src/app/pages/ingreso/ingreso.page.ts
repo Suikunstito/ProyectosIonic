@@ -5,10 +5,10 @@ import { Usuario } from 'src/app/model/usuario';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  templateUrl: './ingreso.page.html',
+  styleUrls: ['./ingreso.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class IngresoPage implements OnInit {
 
   // CGV: La clase typescript "LoginPage" es la encargada de implementar las reglas de negocio de la página.
   // Las propiedades del archivo typescript pueden intercambiar valores con los elementos HTML, por medio
@@ -78,7 +78,7 @@ export class LoginPage implements OnInit {
           }
         };
         this.mostrarMensaje(`¡Bienvenido(a) ${usu.nombre} ${usu.apellido}!`);
-        this.router.navigate(['/home'], navigationExtras); // Navegamos hacia el Home y enviamos la información extra
+        this.router.navigate(['/inicio'], navigationExtras); // Navegamos hacia el Home y enviamos la información extra
       }
     }
   }
