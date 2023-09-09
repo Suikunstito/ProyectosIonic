@@ -27,6 +27,10 @@ export class Usuario extends Persona {
     return this.password;
   }
 
+  public getPreguntaSecreta(): string {
+    return this.preguntaSecreta;
+  }
+
   public setUsuario(correo: string, password: string): void {
     this.correo = correo;
     this.password = password;
@@ -81,7 +85,8 @@ export class Usuario extends Persona {
       , new Date(2000, 3, 1)));
     return lista;
   }
-
+  
+  // Ingresa correo y contraseña y si existen en la lista, devuelve el usuario encontrado
   public buscarUsuarioValido(correo: string, password: string): Usuario | undefined {
     const nived: Usuario | undefined = this.listaUsuariosValidos().find(
       usu => usu.correo === correo && usu.password === password);
@@ -121,4 +126,10 @@ export class Usuario extends Persona {
     return this.validarCorreo() || this.validarPassword() || this.validarCredenciales();
   }
 
+
+  public buscarCorreoValido(correo: string): Usuario | undefined {
+    const nived: Usuario | undefined = this.listaUsuariosValidos().find(
+      usu => usu.correo === correo);
+    return nived;
+  }
 }

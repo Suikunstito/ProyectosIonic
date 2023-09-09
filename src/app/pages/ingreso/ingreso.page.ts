@@ -4,7 +4,7 @@ import { ToastController } from '@ionic/angular'; // Permite mostrar mensajes em
 import { Usuario } from 'src/app/model/usuario';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-ingreso',
   templateUrl: './ingreso.page.html',
   styleUrls: ['./ingreso.page.scss'],
 })

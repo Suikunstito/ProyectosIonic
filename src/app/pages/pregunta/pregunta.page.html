@@ -10,4 +10,13 @@
       <ion-title size="large">pregunta</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-title class="ion-padding-top">
+    <ion-label class="ion-text-center">
+      <h1>¡Bienvenido!</h1>
+      <p *ngIf="usuario">Usuario: {{ usuario.preguntaSecreta }}</p>
+      <h4>Información Adicional</h4>
+    </ion-label>
+  </ion-title>
+
 </ion-content>
