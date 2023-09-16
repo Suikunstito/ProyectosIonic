@@ -1,75 +1,53 @@
-<ion-content [fullscreen]="true">
-  <ion-title class="ion-padding-top ion-text-center">
-    <img src="assets/img/DUOC.jpg" alt="">
-  </ion-title>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio" text="Atras" icon="caret-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mi clase</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-label class="ion-text-center">
-    <h1>Datos de la asignatura</h1>
-  </ion-label>
-
+<ion-content class="ion-padding ion-text-center">
+  <img src="assets/img/DUOC.jpg" alt="">
+  <h1>Datos de la asignatura</h1>
   <ion-card class="ion-text-center ion-padding-vertical">
-    <ion-header collapse="condense">
-      <ion-toolbar>
-        <ion-title size="large">miclase</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-    <ion-item #itemSede>
-      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
-      [(ngModel)]="sede"></ion-input>
-    </ion-item>
-
-    <ion-item #itemSigla>
-      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
-      [(ngModel)]="idAsignatura"></ion-input>
-    </ion-item>
-
-    <ion-item #itemSeccion>
-      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
-      [(ngModel)]="seccion"></ion-input>
-    </ion-item>
-
-    <ion-item #itemNomAsig>
-      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
-      [(ngModel)]="nombreAsignatura"></ion-input>
-    </ion-item>
-
-    <ion-item #itemNomProf>
-      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
-      [(ngModel)]="nombreProfesor"></ion-input>
-    </ion-item>
-
-    <ion-item #itemDia>
-      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
-      [(ngModel)]="dia"></ion-input>
-    </ion-item>
-
-    <ion-item #itemBloIni>
-      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
-      [(ngModel)]="bloqueInicio"></ion-input>
-    </ion-item>
-
-    <ion-item #itemBloTer>
-      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
-      [(ngModel)]="bloqueTermino"></ion-input>
-    </ion-item>
-
-    <ion-item #itemHoraIni>
-      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
-      [(ngModel)]="horaInicio"></ion-input>
-    </ion-item>
-
-    <ion-item #itemHoraTer>
-      <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text" 
-      [(ngModel)]="horaFin"></ion-input>
-    </ion-item>
-    
+    <ion-grid>
+      <ion-row>
+        <!-- Columna para etiquetas -->
+        <ion-col size="6" class="ion-text-left">
+          <ion-label>
+            <p>Sede</p>
+            <p>Sigla</p>
+            <p>Seccion</p>
+            <p>Nombre asignatura</p>
+            <p>Nombre profesor</p>
+            <p>Dia</p>
+            <p>Bloque de inicio</p>
+            <p>Bloque de termino</p>
+            <p>Hora de inicio</p>
+            <p>Hora de termino</p>
+          </ion-label>
+        </ion-col>
+        <!-- Columna para datos -->
+        <ion-col size="6" class="ion-text-right">
+          <ion-label>
+            <p>{{sede}}</p>
+            <p>{{idAsignatura}}</p>
+            <p>{{seccion}}</p>
+            <p>{{nombreAsignatura}}</p>
+            <p>{{nombreProfesor}}</p>
+            <p>{{dia}}</p>
+            <p>{{bloqueInicio}}</p>
+            <p>{{bloqueTermino}}</p>
+            <p>{{horaInicio}}</p>
+            <p>{{horaFin}}</p>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     <ion-label>
       <br>
-      <a routerLink="/ingreso">Cerrar sesion</a>
+      <a routerLink="/ingreso">Cerrar sesión</a>
     </ion-label>
-
   </ion-card>
-
-
 </ion-content>

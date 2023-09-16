@@ -86,7 +86,10 @@ export class Usuario extends Persona {
     return lista;
   }
   
-  // Ingresa correo y contraseña y si existen en la lista, devuelve el usuario encontrado
+  // Funcion que devuelve un valor tipo Usuario o undefined, que recibe 2 strings: 'correo' y 'password'
+  // Dentro crea una variable tipo Usuario o undefined que la inicializa llamando a una funcion
+  // que busca a un Usuario con una 'funcion de flecha' pasando los strings 'correo' y 'password' y
+  // devuelve la concidencia en la lista de Usuarios.
   public buscarUsuarioValido(correo: string, password: string): Usuario | undefined {
     const nived: Usuario | undefined = this.listaUsuariosValidos().find(
       usu => usu.correo === correo && usu.password === password);

@@ -40,11 +40,6 @@ const routes: Routes = [
     redirectTo: 'qrreader',
     pathMatch: 'full'
   },
-  {
-    path: 'qrreader',
-    loadChildren: () => import('./pages/qrreader/qrreader.module').then( m => m.QrreaderPageModule)
-  },
-
 ];
 
 @NgModule({

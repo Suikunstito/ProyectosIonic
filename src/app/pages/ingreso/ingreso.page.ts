@@ -11,16 +11,12 @@ import { Usuario } from 'src/app/model/usuario';
 export class IngresoPage implements OnInit {
 
   public usuario: Usuario;
+  public correo: string = "";
+  public password: string = "";
 
   
   constructor(private router: Router, private toastController: ToastController) {
     this.usuario = new Usuario('', '', '', '', '', '', 0, null)
-  
-   
-
-    
-    this.usuario.setUsuario('atorres@duocuc.cl', '1234');
-    
   }
 
   public ngOnInit(): void {
@@ -28,20 +24,21 @@ export class IngresoPage implements OnInit {
     
   }
 
+  // Al presionar el boton ingresar...
   public ingresar(): void {
+    // Setea el usuario actual con las credenciales 'correo' y 'password'...
+    this.usuario.setUsuario(this.correo, this.password)
     
     if (this.usuario) {
-      
-      
+      // Valida el usuario ingresado...
       const mensajeError = this.usuario.validarUsuario();
       if (mensajeError) {
         this.mostrarMensaje(mensajeError);
         return;
       }
 
-    
-      const usu: Usuario | undefined = this.usuario.buscarUsuarioValido(this.usuario.correo, this.usuario.password);
-      
+      // Se crea una variable 'usu' de tipo Usuario o undefined dependiendo de si las credenciales coinciden...
+      const usu: Usuario | undefined = this.usuario.buscarUsuarioValido(this.correo, this.password);
       if (usu) {
         const navigationExtras: NavigationExtras = {
           state: {
@@ -61,5 +58,6 @@ export class IngresoPage implements OnInit {
       });
     toast.present();
   }
+  
 
 }

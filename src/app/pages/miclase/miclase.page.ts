@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router'; // Permite navegar y pasar parámetros extra entre páginas
+import { Usuario } from 'src/app/model/usuario';
 
 @Component({
   selector: 'app-miclase',
@@ -7,6 +8,8 @@ import { ActivatedRoute, Router, NavigationExtras } from '@angular/router'; // P
   styleUrls: ['./miclase.page.scss'],
 })
 export class MiclasePage implements OnInit {
+
+  public usuario: Usuario;
 
   public sede: string = '';
   public idAsignatura: string = '';
@@ -19,13 +22,16 @@ export class MiclasePage implements OnInit {
   public horaInicio: string = '';
   public horaFin: string = '';
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router) {
+    this.usuario = new Usuario('', '', '', '', '', '', 0, null);
+   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe(() => {
       const nav = this.router.getCurrentNavigation();
       if (nav) {
         if (nav.extras.state) {
+          this.usuario = nav.extras.state['usuario'];
           this.sede = nav.extras.state['sede'];
           this.idAsignatura = nav.extras.state['idAsignatura'];
           this.seccion = nav.extras.state['seccion'];
@@ -41,6 +47,15 @@ export class MiclasePage implements OnInit {
       }
       this.router.navigate(['/login']);
     });
+  }
+
+  public cambioPag(): void {
+    const navigationExtras: NavigationExtras = {
+      state: {
+        usuario: this.usuario,
+      }
+    };
+    this.router.navigate(['/inicio'], navigationExtras)
   }
 
 }

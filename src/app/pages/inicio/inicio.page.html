@@ -1,91 +1,59 @@
+<ion-menu side="end" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Navegador</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-button expand="block" (click)="cambioPag()">Mi clase</ion-button>
+  </ion-content>
+</ion-menu>
 
-<ion-header>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Inicio</ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button auto-hide="false"></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
 
-</ion-header>
+  <img src="assets/img/Logo_DuocUC.svg.png" alt="">
+  <ion-content class="ion-padding">
+    <ion-title class="ion-padding-top">
+      <ion-label class="ion-text-center">
+        <h1>¡Bienvenido!</h1>
+        <h2 *ngIf="usuario">{{ usuario.nombre }} {{ usuario.apellido }}</h2>
+        <p style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word;">
+          Escanee el codigo QR para registrar tu asistencia a clases</p>
+      </ion-label>
+    </ion-title>
+    <ion-card class="ion-text-center ion-padding-vertical">
+      <form>
+        <ion-grid>
+          <ion-button *ngIf="!escaneando" (click)="comenzarEscaneoQR()" expand="full" shape="round">
+            <ion-icon slot="start" name="videocam-outline"></ion-icon>
+            Comenzar Escaneo de QR
+          </ion-button>
 
+          <ion-button *ngIf="escaneando" (click)="detenerEscaneoQR()" expand="full" shape="round">
+            <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
+            Detener escaneo de QR
+          </ion-button>
 
+          <video #video [hidden]="!escaneando" width="100%"></video>
+          <canvas #canvas hidden></canvas>
+        </ion-grid>
+      </form>
 
-<ion-content [fullscreen]="true" class="ion-padding-horizontal">
-  <ion-title class="ion-padding-top ion-text-center">
-    <img src="assets/img/DUOC.jpg" alt="">
-  </ion-title>
-
-  <ion-title class="ion-padding-top">
-    <ion-label class="ion-text-center">
-      <h1>¡Bienvenido!</h1>
-      <p *ngIf="usuario">Usuario: {{ usuario.correo }}</p>
-      <h4>Información Adicional</h4>
-    </ion-label>
-  </ion-title>
-  <ion-card class="ion-text-center ion-padding-vertical">
-    
-    <form>
-      <ion-list>
-        
-        <ion-item #itemNombre>
-          <ion-input name="nombre" label="Nombre" labelPlacement="floating" type="text"
-            [(ngModel)]="usuario.nombre"></ion-input>
-        </ion-item>
-
-        
-        <ion-item #itemApellido>
-          <ion-input name="apellido" label="Apellido" labelPlacement="floating" type="text"
-            [(ngModel)]="usuario.apellido"></ion-input>
-        </ion-item>
-
-        
-        <ion-item #itemEducacion>
-          <ion-select name="nivelEducacional" label="Educación" labelPlacement="floating"
-            [(ngModel)]="idNivelEducacional" (ngModelChange)="cambiarNivelEducacional()">
-            <ion-select-option *ngFor="let nived of nivelesEducacionales" [value]="nived.id">
-              {{ nived.nombre }}
-            </ion-select-option>
-          </ion-select>
-        </ion-item>
-
-        
-        <ion-item #itemFechaNacimiento>
-          <mat-form-field slot="start" [ngClass]="'fecha'">
-            <mat-label>Nacimiento</mat-label>
-            <input matInput name="date" [matDatepicker]="fecha" [(ngModel)]="usuario.fechaNacimiento" readonly>
-            <mat-datepicker-toggle matSuffix [for]="fecha"></mat-datepicker-toggle>
-            <mat-datepicker #fecha></mat-datepicker>
-          </mat-form-field>
-        </ion-item>
-      </ion-list>
-
-     
-      <ion-grid>
-        <ion-row>
-          <ion-col col-6>
-            <ion-button shape="block" (click)="limpiarFormulario()"> Limpiar </ion-button>
-          </ion-col>
-          <ion-col col-6>
-            <ion-button shape="block" (click)="mostrarDatosPersona()"> Mostrar </ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-      <ion-grid>
-        <ion-row>
-          <ion-col col-12>
-            <ion-button shape="block" (click)="escanear()"> Escanear QR </ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-
-    </form>
-   
-
-    <ion-label>
-      <br>
-      <a routerLink="/ingreso">Cerrar sesion</a>
-    </ion-label>
-  </ion-card>
-
-
-</ion-content>
-
-
-
-<ion-footer>
-</ion-footer>
+      <ion-label>
+        <br>
+        <a routerLink="/ingreso">Cerrar sesion</a>
+      </ion-label>
+    </ion-card>
+  </ion-content>
+</div>
