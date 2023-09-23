@@ -19,8 +19,6 @@ export class InicioPage implements OnInit, AfterViewInit {
   @ViewChild('titulo', { read: ElementRef }) itemTitulo!: ElementRef;
   @ViewChild('itemNombre', { read: ElementRef }) itemNombre!: ElementRef;
   @ViewChild('itemApellido', { read: ElementRef }) itemApellido!: ElementRef;
-  @ViewChild('itemEducacion', { read: ElementRef }) itemEducacion!: ElementRef;
-  @ViewChild('itemFechaNacimiento', { read: ElementRef }) itemFechaNacimiento!: ElementRef;
 
   @ViewChild('video')
   private video!: ElementRef;
@@ -102,7 +100,6 @@ export class InicioPage implements OnInit, AfterViewInit {
     this.detenerCamara();
   }
 
-
   // Metodo que inicializa la camara del dispositivo y muestra la imagen en la pagina
   public async comenzarEscaneoQR() {
     const mediaProvider: MediaProvider = await navigator.mediaDevices.getUserMedia({
@@ -156,7 +153,6 @@ export class InicioPage implements OnInit, AfterViewInit {
   public mostrarDatosQROrdenados(datosQR: string): void {
     this.datosQR = datosQR;
 
-
     const objetoDatosQR = JSON.parse(datosQR);
     this.sede = objetoDatosQR.sede;
     this.idAsignatura = objetoDatosQR.idAsignatura;
@@ -184,12 +180,6 @@ export class InicioPage implements OnInit, AfterViewInit {
         track.stop();
       });
     }
-  }
-
-  //
-
-  public cambiarNivelEducacional(): void {
-    this.usuario.setNivelEducacional(this.idNivelEducacional);
   }
 
   public animateItem(elementRef: any) {

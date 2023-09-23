@@ -1,40 +1,38 @@
-<ion-content [fullscreen]="true">
-  <ion-title class="ion-padding-top ion-text-center">
-    <img src="assets/img/DUOC.jpg" alt="">
-  </ion-title>
-
-
-
-  <ion-header collapse="condense">
+<div class="heading ion-padding">
+  <ion-header style="position: absolute; top: 0; left: 0;">
     <ion-toolbar>
-      <ion-title size="large">pregunta</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/" text="Atras"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Recuperar contraseña</ion-title>
     </ion-toolbar>
   </ion-header>
-
-
-  <ion-card class="ion-text-center ion-padding-vertical">
-    <ion-title class="ion-padding-top">
+</div>
+<ion-content [fullscreen]="true">
+  <br>
+  <br>
+  <div class="content-section ion-text-center ion-padding">
+    <div class="content1">
       <ion-label class="ion-text-center">
-        <h1>Responde la pregunta</h1>
+        <h1>Responda la pregunta</h1>
         <p *ngIf="usuario">{{ usuario.preguntaSecreta }}</p>
       </ion-label>
-    </ion-title>
-
-    <ion-item>
-      <ion-label position="floating">Respuesta</ion-label>
-      <ion-input [(ngModel)]="respuesta" name="respuesta" type="text"></ion-input>
-    </ion-item>
-
-    <ion-button (click)="recuperarRespuesta()">Comprobar Respuesta</ion-button>
-
-
-
-    <ion-label>
-      <br>
-      <br>
-      <a routerLink="/ingreso">Iniciar sesion</a>
-    </ion-label>
-  </ion-card>
-
-
+    </div>
+    <div class="content2">
+      <ion-label>
+        <form>
+          <ion-item>
+            <ion-label position="floating">Respuesta</ion-label>
+            <ion-input [(ngModel)]="respuesta" name="respuesta" type="text"></ion-input>
+          </ion-item>
+          <br>
+          <ion-button (click)="recuperarRespuesta()">Comprobar Respuesta</ion-button>
+        </form>
+      </ion-label>
+      <ion-label>
+        <br>
+        <a routerLink="/ingreso">Iniciar sesion</a>
+      </ion-label>
+    </div>
+  </div>
 </ion-content>

@@ -1,13 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router'; // Permite navegar y pasar parámetros extra entre páginas
 import { Usuario } from 'src/app/model/usuario';
+import { AnimationController } from '@ionic/angular';
 
 @Component({
   selector: 'app-miclase',
   templateUrl: './miclase.page.html',
   styleUrls: ['./miclase.page.scss'],
 })
-export class MiclasePage implements OnInit {
+export class MiclasePage implements OnInit, AfterViewInit {
+
+  @ViewChild('titulo', { read: ElementRef }) itemTitulo!: ElementRef;
+  @ViewChild('itemNombre', { read: ElementRef }) itemNombre!: ElementRef;
+  @ViewChild('itemApellido', { read: ElementRef }) itemApellido!: ElementRef;
+
 
   public usuario: Usuario;
 
@@ -22,7 +28,9 @@ export class MiclasePage implements OnInit {
   public horaInicio: string = '';
   public horaFin: string = '';
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute
+    , private router: Router
+    , private animationController: AnimationController) {
     this.usuario = new Usuario('', '', '', '', '', '', 0, null);
    }
 
@@ -47,6 +55,30 @@ export class MiclasePage implements OnInit {
       }
       this.router.navigate(['/login']);
     });
+  }
+
+  public ngAfterViewInit(): void {
+    if (this.itemTitulo) {
+      const animation = this.animationController
+        .create()
+        .addElement(this.itemTitulo.nativeElement)
+        .iterations(Infinity)
+        .duration(6000)
+        .fromTo('transform', 'translate(0%)', 'translate(100%)')
+        .fromTo('opacity', 0.2, 1);
+
+      animation.play();
+    }
+  }
+
+  public animateItem(elementRef: any) {
+    this.animationController
+      .create()
+      .addElement(elementRef)
+      .iterations(1)
+      .duration(600)
+      .fromTo('transform', 'translate(100%)', 'translate(0%)')
+      .play();
   }
 
   public cambioPag(): void {

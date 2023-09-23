@@ -1,59 +1,43 @@
-<ion-menu side="end" contentId="main-content">
+<div class="heading ion-padding">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Navegador</ion-title>
+      <ion-title slot="start" #titulo>
+        <img src="assets/img/Logo_DuocUC.svg.png" alt="">
+      </ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content class="ion-padding">
-    <ion-button expand="block" (click)="cambioPag()">Mi clase</ion-button>
-  </ion-content>
-</ion-menu>
-
-<div class="ion-page" id="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-      <ion-title>Inicio</ion-title>
-      <ion-buttons slot="end">
-        <ion-menu-button auto-hide="false"></ion-menu-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-
-  <img src="assets/img/Logo_DuocUC.svg.png" alt="">
-  <ion-content class="ion-padding">
-    <ion-title class="ion-padding-top">
-      <ion-label class="ion-text-center">
-        <h1>¡Bienvenido!</h1>
-        <h2 *ngIf="usuario">{{ usuario.nombre }} {{ usuario.apellido }}</h2>
-        <p style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word;">
-          Escanee el codigo QR para registrar tu asistencia a clases</p>
-      </ion-label>
-    </ion-title>
-    <ion-card class="ion-text-center ion-padding-vertical">
+</div>
+<ion-content [fullscreen]="true">
+  <div class="inicio-section ion-padding">
+    <div class="content-section ion-text-center ion-padding">
+      <h1>¡Bienvenido!</h1>
+      <h2 *ngIf="usuario">{{ usuario.nombre }} {{ usuario.apellido }}</h2>
+      <p style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word;">
+        Escanee el codigo QR para registrar tu asistencia a clases</p>
       <form>
         <ion-grid>
-          <ion-button *ngIf="!escaneando" (click)="comenzarEscaneoQR()" expand="full" shape="round">
-            <ion-icon slot="start" name="videocam-outline"></ion-icon>
-            Comenzar Escaneo de QR
-          </ion-button>
-
-          <ion-button *ngIf="escaneando" (click)="detenerEscaneoQR()" expand="full" shape="round">
-            <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
-            Detener escaneo de QR
-          </ion-button>
-
-          <video #video [hidden]="!escaneando" width="100%"></video>
-          <canvas #canvas hidden></canvas>
+          <ion-row>
+            <ion-col>
+              <ion-button *ngIf="!escaneando" (click)="comenzarEscaneoQR()" shape="round">
+                <ion-icon slot="start" name="videocam-outline"></ion-icon>
+                Comenzar Escaneo de QR
+              </ion-button>
+              <ion-button *ngIf="escaneando" (click)="detenerEscaneoQR()" shape="round">
+                <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
+                Detener escaneo de QR
+              </ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button expand="block" (click)="cambioPag()">Mi clase</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <video #video [hidden]="!escaneando" width="100%"></video>
+            <canvas #canvas hidden></canvas>
+          </ion-row>
         </ion-grid>
       </form>
-
-      <ion-label>
-        <br>
-        <a routerLink="/ingreso">Cerrar sesion</a>
-      </ion-label>
-    </ion-card>
-  </ion-content>
-</div>
+      <a routerLink="/ingreso">Cerrar sesion</a>
+    </div>
+  </div>
+</ion-content>

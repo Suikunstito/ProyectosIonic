@@ -1,42 +1,41 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/" text="Atras" icon="caret-back"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Recuperar contraseña</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-
-<ion-content>
-  <ion-title class="ion-padding-top ion-text-center">
-    <img src="assets/img/DUOC.jpg" alt="">
-  </ion-title>
-
-  <div class="ion-padding-vertical">
-    <ion-card class="ion-text-center ion-padding-vertical">
-      <ion-card-title class="ion-text-center">
-        <ion-label>
-          <h2>Sistema de Sistencia DUOC</h2>
-          <h3>Recuperar contraseña</h3>
-          <h3>Paso 1: Ingrese su correo</h3>
-        </ion-label>
-      </ion-card-title>
-
-      <form>
-        <ion-card-content>
+<div class="heading ion-padding">
+  <ion-header style="position: absolute; top: 0; left: 0;">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/" text="Atras"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Recuperar contraseña</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</div>
+<ion-content [fullscreen]="true">
+  <br>
+  <br>
+  <div class="content-section ion-text-center ion-padding">
+    <div class="content1">
+      <ion-label>
+        <br>
+        <h2>Sistema de Asistencia DUOC</h2>
+        <h3>Recuperar contraseña</h3>
+        <h3>Paso 1: Ingrese su correo</h3>
+      </ion-label>
+    </div>
+    <div class="content2">
+      <ion-label>
+        <form>
           <ion-item>
             <ion-input name="correo" label="Correo" labelPlacement="floating" type="text"
               [(ngModel)]="correo"></ion-input>
           </ion-item>
+          <br>
           <ion-button shape="block" (click)="recuperar()">Recuperar contraseña</ion-button>
-        </ion-card-content>
-      </form>
-      
+        </form>
+      </ion-label>
+
       <ion-label>
         <br>
         <a routerLink="/ingreso">Iniciar sesion</a>
       </ion-label>
-    </ion-card>
+    </div>
   </div>
 </ion-content>
