@@ -1,30 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, NavigationExtras } from '@angular/router'; // Permite navegar y pasar parámetros extra entre páginas
-import { ToastController } from '@ionic/angular'; // Permite mostrar mensajes emergente
-import { Usuario } from 'src/app/model/usuario';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-correcto',
   templateUrl: './correcto.page.html',
   styleUrls: ['./correcto.page.scss'],
+  standalone: true,
+  imports: [IonicModule, CommonModule, FormsModule]
 })
 export class CorrectoPage implements OnInit {
-  public usuario: Usuario;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
-    this.usuario = new Usuario('', '', '', '', '', '', 0, null);
-  }
-
-
-  ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      const nav = this.router.getCurrentNavigation();
-      if (nav) {
-        if (nav.extras.state && nav.extras.state['usuario']) {
-          this.usuario = nav.extras.state['usuario'];
-          return;
-        }
-      }
-      this.router.navigate(['/login']);
+  constructor(private router: Router, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe((params: any) => {
+      this.password = params['password'];
     });
   }
+
+  password = '';
+
+  ngOnInit() {
+  }
+  volverAlInicio() {
+    this.router.navigate(['/ingreso']); // Reemplaza '/inicio' con la ruta correcta a tu página de inicio.
+  }
+
 }
+

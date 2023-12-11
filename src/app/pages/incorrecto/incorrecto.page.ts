@@ -1,23 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router'; // Permite navegar y pasar parámetros extra entre páginas
-import { ToastController } from '@ionic/angular'; // Permite mostrar mensajes emergente
-import { Usuario } from 'src/app/model/usuario';
-
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-incorrecto',
   templateUrl: './incorrecto.page.html',
   styleUrls: ['./incorrecto.page.scss'],
+  standalone: true,
+  imports: [IonicModule, CommonModule, FormsModule]
 })
 export class IncorrectoPage implements OnInit {
-  public usuario: Usuario;
 
-  constructor(private router: Router, private toastController: ToastController) {
-    this.usuario = new Usuario('', '', '', '', '', '', 0, null)
-  
-  }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
+  volverAlInicio() {
+    this.router.navigate(['/inicio']); // Reemplaza '/inicio' con la ruta correcta a tu página de inicio.
+  }
+
 
 }

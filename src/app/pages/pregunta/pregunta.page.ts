@@ -1,52 +1,50 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, NavigationExtras } from '@angular/router'; // Permite navegar y pasar parámetros extra entre páginas
-import { ToastController } from '@ionic/angular'; // Permite mostrar mensajes emergente
-import { Usuario } from 'src/app/model/usuario';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DataBaseService } from 'src/app/services/data-base.service';
+import { Usuario } from 'src/app/models/Usuario';
+import { showToast } from 'src/app/tools/message-routines';
 
 @Component({
   selector: 'app-pregunta',
   templateUrl: './pregunta.page.html',
   styleUrls: ['./pregunta.page.scss'],
+  standalone: true,
+  imports: [IonicModule, CommonModule, FormsModule]
 })
 export class PreguntaPage implements OnInit {
 
-  public usuario: Usuario;
-  public respuesta: string = ''; 
-
-  constructor(private route: ActivatedRoute, private router: Router) {
-    this.usuario = new Usuario('', '', '', '', '', '', 0, null);
-  }
-
+  constructor(private router: Router, private bd: DataBaseService, 
+    private activatedRoute: ActivatedRoute) {
+      this.activatedRoute.queryParams.subscribe(params => {
+      this.preguntaSecreta =params['pregunta'];
+      });
+    }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      const nav = this.router.getCurrentNavigation();
-      if (nav) {
-        if (nav.extras.state && nav.extras.state['usuario']) {
-          this.usuario = nav.extras.state['usuario'];
-          return;
-        }
+  }
+
+  public preguntaSecreta = '';
+  usuario = new Usuario();
+  respuestaSecreta = ''; 
+
+  async comprobarRespuesta(respuestaSecreta: string) {
+    await this.bd.validarRespuesta(respuestaSecreta).then(async (usuario : Usuario | undefined) => {
+      if (usuario){
+        showToast(`La respuesta es: ${usuario.respuestaSecreta}`);
+        this.router.navigate(['/correcto'], {queryParams : {password: usuario.password}});
+        console.log(usuario);
+      } else {
+        this.router.navigate(['/incorrecto']);
       }
-      this.router.navigate(['/login']);
     });
   }
 
-  public recuperarRespuesta(): void {
-    if (this.usuario) {
-      // Trae al usuario en base a la respuesta
-      const usu: Usuario | undefined = this.usuario.buscarRespuesta(this.usuario.correo, this.respuesta);
-
-      if (usu) {
-        const navigationExtras: NavigationExtras = {
-          state: {
-            usuario: usu
-          }
-        };
-        this.router.navigate(['/correcto'], navigationExtras)
-      }
-      else {
-        this.router.navigate(['/incorrecto'])
-      }
-    }
+  volverIngreso(){
+    this.router.navigate(['/ingreso']);
   }
+
+
 }

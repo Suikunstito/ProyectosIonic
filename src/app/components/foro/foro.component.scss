@@ -1,0 +1,19 @@
+ion-card-title {
+    font-size: 1.2rem; /* Tamaño de fuente ajustable según tus preferencias */
+    font-weight: bold; /* O ajusta según tus preferencias */
+  }
+  
+  ion-card-header h4 {
+    margin-bottom: 0; /* Elimina el espacio debajo del título */
+  }
+  
+  ion-card-content {
+    font-size: 1rem; /* Tamaño de fuente ajustable según tus preferencias */
+  }
+  
+  .alinear-centro {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }

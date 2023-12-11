@@ -8,29 +8,30 @@
     </ion-toolbar>
   </ion-header>
 </div>
-<ion-content [fullscreen]="true">
-  <br>
-  <br>
-  <div class="content-section ion-text-center ion-padding">
-    <div class="content1">
-      <ion-label>
-        <br>
-        <h1>Correcto!!!</h1>
-        <img src="assets/img/on.png" alt="">
-        <h3>La repuesta ha sido valida <br>
-          su contrasena es la siguiente:</h3>
+
+<div id="contenido" style=" height: 100%; display: flex; flex-direction: column;">
+  <ion-content [fullscreen]="true">
+    <br>
+    <br>
+    <div class="content-section ion-text-center ion-padding">
+      <div class="content1">
+        <ion-label>
           <br>
-        <h2>{{usuario.password}}</h2>
+          <h1>Correcto!!!</h1>
+          <img src="assets/img/on.png" alt="">
+          <h3>La repuesta ha sido valida <br>
+            su contrasena es la siguiente:</h3>
+          <br>
+          <h2>{{password}}</h2>
 
-      </ion-label>
+        </ion-label>
+      </div>
+      <div class="content2">
+        <ion-label>
+          <br>
+          <a (click)="volverAlInicio()">Iniciar sesion</a>
+        </ion-label>
+      </div>
     </div>
-    <div class="content2">
-      <ion-label>
-        <br>
-        <a routerLink="/ingreso">Iniciar sesion</a>
-      </ion-label>
-    </div>
-  </div>
-</ion-content>
-
-
+  </ion-content>
+</div>

@@ -1,32 +1,33 @@
-<ion-content [fullscreen]="true">
-  <img src="assets/img/Logo_DuocUC.svg.png" alt="">
-  <div class="content-section ion-text-center ion-padding">
-    <div class="content1">
-      <ion-label>
-        <br>
-        <h2>Sistema de Asistencia DUOC</h2>
-      </ion-label>
-    </div>
-    <div class="content2">
-      <ion-label>
-        <form>
-          <ion-item>
-            <ion-input name="correo" label="Correo" labelPlacement="stacked" type="text" [(ngModel)]="correo"
-              placeholder="Ingrese su correo"></ion-input>
-          </ion-item>
+<div id="contenido" style=" height: 100%; display: flex; flex-direction: column;">
+  <ion-content [fullscreen]="true">
+    <img src="assets/img/Logo_DuocUC.svg.png" alt="">
+    <div id="insideComp2" class="content-section ion-text-center ion-padding">
+      <div class="content1">
+        <ion-label>
           <br>
-          <ion-item>
-            <ion-input name="password" label="Contraseña" labelPlacement="stacked" type="password"
-              [(ngModel)]="password" placeholder="Ingrese su contraseña"></ion-input>
-          </ion-item>
-          <br>
-          <ion-button shape="block" (click)="ingresar()">Ingresar</ion-button>
-        </form>
-      </ion-label>
-      <ion-label>
+          <h2>Sistema de Asistencia DUOC</h2>
+        </ion-label>
+      </div>
+      <div class="content2">
+        <ion-item>
+          <ion-input name="correo" label="Correo" labelPlacement="stacked" type="text" [(ngModel)]="correo"
+            placeholder="Ingrese su correo"></ion-input>
+        </ion-item>
         <br>
-        <a routerLink="/correo">Recuperar contraseña</a>
-      </ion-label>
+        <ion-item>
+          <ion-input name="password" label="Contraseña" labelPlacement="stacked" type="password" [(ngModel)]="password"
+            placeholder="Ingrese su contraseña"></ion-input>
+        </ion-item>
+        <br>
+        <ion-button shape="block" (click)="ingresar()">Ingresar</ion-button>
+        <ion-label>
+          <br>
+          <a (click)="recuperar()">Recuperar contraseña</a>
+          <br>
+          <br>
+          <a (click)="registrarse()">Quiero registrarme!</a>
+        </ion-label>
+      </div>
     </div>
-  </div>
-</ion-content>
+  </ion-content>
+</div>

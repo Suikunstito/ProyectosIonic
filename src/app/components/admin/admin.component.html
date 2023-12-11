@@ -1,0 +1,13 @@
+<div id="insideComp2" class="content-section ion-text-center ion-padding">
+  <h1>Administracion de usuarios</h1>
+  <a #topOfPage href="#topOfPage"></a>
+
+
+    <ion-list>
+      <ion-item *ngFor="let usuario of usuarios">
+        <ion-label>{{ usuario.nombre }} {{ usuario.apellido }}</ion-label>
+        <ion-button color="danger" *ngIf="!usuario.correo.toLowerCase().includes('admin')" (click)="eliminarUsuario(usuario.correo)">Eliminar</ion-button>
+      </ion-item>
+    </ion-list>
+
+</div>

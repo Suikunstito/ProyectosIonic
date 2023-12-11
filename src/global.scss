@@ -25,7 +25,6 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-
 ion-button {
   --background: #f1b634;
   --background-hover: #000000;
@@ -44,11 +43,33 @@ ion-button {
   --padding-bottom: 10px;
 }
 
+ion-item {
+  --background: rgba(85, 61, 9, 0.7);
+  border-radius: 10px;
+}
+
+
 ion-content{
   --padding-top: 20px;
   --padding-bottom: 20px;
   --padding-end: 20px;
   --padding-start: 20px;
 
-  --background: url(./assets/img/unsplash.jpg) no-repeat center center / cover;
+  --background: rgba(85, 61, 9, 0);
+}
+
+#insideComp{
+  background-color: rgb(8, 8, 8, 0.7);
+  border-radius: 10px;
+  height: 100%;
+}
+
+#insideComp2{
+  background-color: rgb(8, 8, 8, 0.7);
+  border-radius: 10px;
+}
+
+#contenido {
+  background: url(./assets/img/unsplash.jpg) no-repeat center center / cover;
+
 }

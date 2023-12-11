@@ -1,0 +1,29 @@
+<div id="insideComp" class="content-section ion-text-center ion-padding">
+  <div class="ion-padding-bottom">
+    <h1 id="welcome-message">
+      ¡Bienvenido(a) {{ usuario.nombre }} {{ usuario.apellido }}!
+    </h1>
+  </div>
+  <p style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word;">
+    Escanee el codigo QR para registrar tu asistencia a clases</p>
+  <form>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button shape="round" *ngIf="!escaneando" (click)="comenzarEscaneoQR()">
+            <ion-icon slot="start" name="videocam-outline"></ion-icon>
+            Comenzar Escaneo de QR
+          </ion-button>
+          <ion-button shape="round" *ngIf="escaneando" (click)="detenerEscaneoQR()">
+            <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
+            Detener escaneo de QR
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <video #video [hidden]="!escaneando" width="100%"></video>
+        <canvas #canvas hidden></canvas>
+      </ion-row>
+    </ion-grid>
+  </form>
+</div>

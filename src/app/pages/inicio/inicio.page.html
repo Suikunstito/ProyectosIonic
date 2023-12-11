@@ -1,43 +1,40 @@
-<div class="heading ion-padding">
-  <ion-header>
+<div id="contenido" style=" height: 100%; display: flex; flex-direction: column;">
+  <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-title slot="start" #titulo>
-        <img src="assets/img/Logo_DuocUC.svg.png" alt="">
-      </ion-title>
+      <img src="assets/img/Logo_DuocUC.svg.png" alt="" #titulo>
+      <ion-segment [(ngModel)]="componente_actual" (ngModelChange)="cambiarComponente($event)">
+        <ion-segment-button value="qr">
+          <ion-label>QR</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="misdatos">
+          <ion-label>Mis datos</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="miclase">
+          <ion-label>Mi clase</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="foro">
+          <ion-label>Foro</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="admin">
+          <ion-label>Admin</ion-label>
+        </ion-segment-button>
+      </ion-segment>
     </ion-toolbar>
   </ion-header>
+
+  <ion-content>
+    <app-qr [hidden]="componente_actual !== 'qr'" (qrCapturado)="cambiarComponente('miclase')"></app-qr>
+    <app-miclase [hidden]="componente_actual !== 'miclase'"></app-miclase>
+    <app-foro [hidden]="componente_actual !== 'foro'"></app-foro>
+    <app-misdatos [hidden]="componente_actual !== 'misdatos'"></app-misdatos>
+    <app-admin [hidden]="componente_actual !== 'admin'"></app-admin>
+  </ion-content>
+
+  <ion-footer [translucent]="true">
+    <ion-toolbar class="ion-text-center">
+      <ion-button (click)="cerrarSesion()" fill="clear" shape="round">
+        Cerrar sesión
+      </ion-button>
+    </ion-toolbar>
+  </ion-footer>
 </div>
-<ion-content [fullscreen]="true">
-  <div class="inicio-section ion-padding">
-    <div class="content-section ion-text-center ion-padding">
-      <h1>¡Bienvenido!</h1>
-      <h2 *ngIf="usuario">{{ usuario.nombre }} {{ usuario.apellido }}</h2>
-      <p style="white-space: normal; word-wrap: break-word; overflow-wrap: break-word;">
-        Escanee el codigo QR para registrar tu asistencia a clases</p>
-      <form>
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-button *ngIf="!escaneando" (click)="comenzarEscaneoQR()" shape="round">
-                <ion-icon slot="start" name="videocam-outline"></ion-icon>
-                Comenzar Escaneo de QR
-              </ion-button>
-              <ion-button *ngIf="escaneando" (click)="detenerEscaneoQR()" shape="round">
-                <ion-icon slot="start" name="stop-circle-outline"></ion-icon>
-                Detener escaneo de QR
-              </ion-button>
-            </ion-col>
-            <ion-col>
-              <ion-button expand="block" (click)="cambioPag()">Mi clase</ion-button>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <video #video [hidden]="!escaneando" width="100%"></video>
-            <canvas #canvas hidden></canvas>
-          </ion-row>
-        </ion-grid>
-      </form>
-      <a routerLink="/ingreso">Cerrar sesion</a>
-    </div>
-  </div>
-</ion-content>

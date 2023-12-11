@@ -1,0 +1,42 @@
+.marco {
+    background-color: #f8e61b22;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin: 16px;
+  }
+  
+  ion-grid {
+    margin: 0;
+  }
+  
+  ion-row {
+    border-bottom: 1px solid #221818;
+    /* Línea divisoria entre las filas */
+    padding: 8px 0;
+  }
+  
+  ion-col {
+    text-align: left;
+    font-weight: bold;
+    color: #8d691b;
+  }
+  
+  span {
+    font-weight: normal;
+    color: #ffffff;
+  }
+  main {
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupar toda la altura de la ventana */
+     /* Eliminar márgenes predeterminados del <main> */
+  }
+  
+  .contenedor-principal {
+    background-color: #e5e5e5; /* Tu color de fondo deseado */
+     
+  }
+  
+  

@@ -1,7 +1,7 @@
 {
-  "name": "SkeletonApp",
+  "name": "Proyectazaso",
   "integrations": {
     "capacitor": {}
   },
-  "type": "angular"
+  "type": "angular-standalone"
 }

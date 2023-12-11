@@ -8,24 +8,26 @@
     </ion-toolbar>
   </ion-header>
 </div>
-<ion-content [fullscreen]="true">
-  <br>
-  <br>
-  <div class="content-section ion-text-center ion-padding">
-    <div class="content1">
-      <ion-label>
-        <br>
-        <h1>Lo sentimos...</h1>
-        <img src="assets/img/off.png" alt="">
-        <h3>Los datos ingresados no son validos, porfavor intentelo nuevamente.</h3>
-      </ion-label>
-    </div>
-    <div class="content2">
-      <ion-label>
-        <br>
-        <a routerLink="/ingreso">Iniciar sesion</a>
-      </ion-label>
-    </div>
-  </div>
-</ion-content>
 
+<div id="contenido" style=" height: 100%; display: flex; flex-direction: column;">
+  <ion-content [fullscreen]="true">
+    <br>
+    <br>
+    <div class="content-section ion-text-center ion-padding">
+      <div class="content1">
+        <ion-label>
+          <br>
+          <h1>Lo sentimos...</h1>
+          <img src="assets/img/off.png" alt="">
+          <h3>Los datos ingresados no son validos, porfavor intentelo nuevamente.</h3>
+        </ion-label>
+      </div>
+      <div class="content2">
+        <ion-label>
+          <br>
+          <a (click)="volverAlInicio()">Iniciar sesion</a>
+        </ion-label>
+      </div>
+    </div>
+  </ion-content>
+</div>

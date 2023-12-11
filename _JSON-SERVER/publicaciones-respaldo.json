@@ -1,0 +1,76 @@
+{
+  "publicaciones": [
+    {
+      "id": 1,
+      "correo": "atorres@duocuc.cl",
+      "nombre": "Ana",
+      "apellido": "Torres",
+      "titulo": "Instituto Duoc: Una Institución Educativa de Excelencia",
+      "contenido": "El Instituto Duoc se ha destacado por ofrecer una educación de calidad en diversas áreas del conocimiento. Sus programas académicos son altamente valorados por estudiantes y empleadores por igual."
+    },
+    {
+      "id": 2,
+      "correo": "avalenzuela@duocuc.cl",
+      "nombre": "Alberto",
+      "apellido": "Valenzuela",
+      "titulo": "Carrera de Ingeniería en Informática en el Instituto Duoc",
+      "contenido": "Si te apasiona la tecnología, la carrera de Ingeniería en Informática en el Instituto Duoc es una excelente opción. Aprenderás las habilidades necesarias para destacarte en el campo de la informática."
+    },
+    {
+      "id": 3,
+      "correo": "cfuentes@duocuc.cl",
+      "nombre": "Carla",
+      "apellido": "Fuentes",
+      "titulo": "Experiencia de un Estudiante en el Instituto Duoc",
+      "contenido": "Como estudiante del Instituto Duoc, he tenido la oportunidad de participar en proyectos emocionantes y adquirir conocimientos prácticos que me preparan para el mundo laboral."
+    },
+    {
+      "id": 4,
+      "correo": "atorres@duocuc.cl",
+      "nombre": "Ana",
+      "apellido": "Torres",
+      "titulo": "Instituto Duoc: Una Institución Educativa de Excelencia",
+      "contenido": "El Instituto Duoc se ha destacado por ofrecer una educación de calidad en diversas áreas del conocimiento. Sus programas académicos son altamente valorados por estudiantes y empleadores por igual."
+    },
+    {
+      "id": 5,
+      "correo": "avalenzuela@duocuc.cl",
+      "nombre": "Alberto",
+      "apellido": "Valenzuela",
+      "titulo": "Carrera de Ingeniería en Informática en el Instituto Duoc",
+      "contenido": "Si te apasiona la tecnología, la carrera de Ingeniería en Informática en el Instituto Duoc es una excelente opción. Aprenderás las habilidades necesarias para destacarte en el campo de la informática."
+    },
+    {
+      "id": 6,
+      "correo": "cfuentes@duocuc.cl",
+      "nombre": "Carla",
+      "apellido": "Fuentes",
+      "titulo": "Experiencia de un Estudiante en el Instituto Duoc",
+      "contenido": "Como estudiante del Instituto Duoc, he tenido la oportunidad de participar en proyectos emocionantes y adquirir conocimientos prácticos que me preparan para el mundo laboral."
+    },
+    {
+      "id": 7,
+      "correo": "atorres@duocuc.cl",
+      "nombre": "Ana",
+      "apellido": "Torres",
+      "titulo": "Oportunidades de Desarrollo Profesional en el Instituto Duoc",
+      "contenido": "En el Instituto Duoc, te brindamos oportunidades únicas de desarrollo profesional. Descubre cómo nuestras carreras te preparan para un futuro exitoso."
+    },    
+    {
+      "id": 8,
+      "correo": "avalenzuela@duocuc.cl",
+      "nombre": "Alberto",
+      "apellido": "Valenzuela",
+      "titulo": "Investigación y Avances en Ciencia en el Instituto Duoc",
+      "contenido": "Nuestro compromiso con la investigación y la innovación en el Instituto Duoc nos permite contribuir al avance de la ciencia. Conoce nuestros proyectos y logros."
+    },    
+    {
+      "id": 9,
+      "correo": "cfuentes@duocuc.cl",
+      "nombre": "Carla",
+      "apellido": "Fuentes",
+      "titulo": "Eventos Culturales en el Instituto Duoc",
+      "contenido": "Descubre la diversidad cultural en el Instituto Duoc. Participa en nuestros eventos culturales que celebran la creatividad y el arte."
+    }
+  ]
+}

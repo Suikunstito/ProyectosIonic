@@ -1,63 +1,38 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router'; 
-import { ToastController } from '@ionic/angular'; 
-import { Usuario } from 'src/app/model/usuario';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { DataBaseService } from 'src/app/services/data-base.service';
 
 @Component({
   selector: 'app-ingreso',
   templateUrl: './ingreso.page.html',
   styleUrls: ['./ingreso.page.scss'],
+  standalone: true,
+  imports: [IonicModule, CommonModule, FormsModule]
 })
 export class IngresoPage implements OnInit {
 
-  public usuario: Usuario;
-  public correo: string = "";
-  public password: string = "";
+  correo = 'atorres@duocuc.cl';
+  password = '1234';
 
-  
-  constructor(private router: Router, private toastController: ToastController) {
-    this.usuario = new Usuario('', '', '', '', '', '', 0, null)
+  constructor(private bd: DataBaseService, private authService: AuthService, private router: Router) { }
+
+  async ngOnInit() {
+    this.bd.crearUsuariosDePrueba().then(async () => {
+      await this.bd.leerUsuarios();
+    });
   }
 
-  public ngOnInit(): void {
-
-    
+  ingresar() {
+    this.authService.login(this.correo, this.password);
   }
-
-  // Al presionar el boton ingresar...
-  public ingresar(): void {
-    // Setea el usuario actual con las credenciales 'correo' y 'password'...
-    this.usuario.setUsuario(this.correo, this.password)
-    
-    if (this.usuario) {
-      // Valida el usuario ingresado...
-      const mensajeError = this.usuario.validarUsuario();
-      if (mensajeError) {
-        this.mostrarMensaje(mensajeError);
-        return;
-      }
-
-      // Se crea una variable 'usu' de tipo Usuario o undefined dependiendo de si las credenciales coinciden...
-      const usu: Usuario | undefined = this.usuario.buscarUsuarioValido(this.correo, this.password);
-      if (usu) {
-        const navigationExtras: NavigationExtras = {
-          state: {
-            usuario: usu
-          }
-        };
-        this.mostrarMensaje(`¡Bienvenido(a) ${usu.nombre} ${usu.apellido}!`);
-        this.router.navigate(['/inicio'], navigationExtras); 
-      }
-    }
+  recuperar() {
+    this.router.navigate(['/correo']);
   }
-
-  async mostrarMensaje(mensaje: string, duracion?: number) {
-    const toast = await this.toastController.create({
-        message: mensaje,
-        duration: duracion? duracion: 2000
-      });
-    toast.present();
+  registrarse(){
+    this.router.navigate(['/registrarme']);
   }
-  
-
 }

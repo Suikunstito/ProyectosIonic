@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text="Atras"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registrar nuevo usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div id="contenido" style=" height: 100%; display: flex; flex-direction: column;">
+  <br><br><br>
+  <div id="insideComp2" class="content-section ion-text-center ion-padding">
+    <div class="ion-padding-bottom">
+      <h1>
+        Registro de Usuarios
+      </h1>
+    </div>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="usuario.correo" label="Correo" labelPlacement="floating"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="usuario.nombre" label="Nombre" labelPlacement="floating"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="usuario.apellido" label="Apellidos" labelPlacement="floating"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="usuario.preguntaSecreta" label="Pregunta secreta"
+        labelPlacement="floating"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="usuario.respuestaSecreta" label="Respuesta secreta"
+        labelPlacement="floating"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" [(ngModel)]="usuario.password" label="Contraseña"
+        labelPlacement="floating"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" [(ngModel)]="repeticionPassword" label="Repetir contraseña"
+        labelPlacement="floating"></ion-input>
+    </ion-item>
+
+    <br>
+    <div class="centrar-boton">
+      <ion-button (click)="registrarUsuario()">
+        Crear mi nueva cuenta
+      </ion-button>
+    </div>
+
+    <ion-button expand="full" (click)="volverAlInicio()">Volver al inicio</ion-button>
+  </div>
+</div>

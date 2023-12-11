@@ -8,31 +8,41 @@
     </ion-toolbar>
   </ion-header>
 </div>
-<ion-content [fullscreen]="true">
-  <br>
-  <br>
-  <div class="content-section ion-text-center ion-padding">
-    <div class="content1">
-      <ion-label class="ion-text-center">
-        <h1>Responda la pregunta</h1>
-        <p *ngIf="usuario">{{ usuario.preguntaSecreta }}</p>
-      </ion-label>
-    </div>
-    <div class="content2">
-      <ion-label>
-        <form>
-          <ion-item>
-            <ion-label position="floating">Respuesta</ion-label>
-            <ion-input [(ngModel)]="respuesta" name="respuesta" type="text"></ion-input>
-          </ion-item>
+
+<div id="contenido" style=" height: 100%; display: flex; flex-direction: column;">
+  <ion-content [fullscreen]="true">
+    <br>
+    <br>
+    <div class="content-section ion-text-center ion-padding">
+      <div class="content1">
+        <ion-label class="ion-text-center">
+          <br><br>
+          <h1>Responda la pregunta secreta</h1>
           <br>
-          <ion-button (click)="recuperarRespuesta()">Comprobar Respuesta</ion-button>
-        </form>
-      </ion-label>
-      <ion-label>
-        <br>
-        <a routerLink="/ingreso">Iniciar sesion</a>
-      </ion-label>
+          <h2>{{ preguntaSecreta }}</h2>
+        </ion-label>
+      </div>
+
+      <div class="content2">
+        <ion-label>
+          <ion-card>
+            <ion-item>
+              <ion-label position="floating">Respuesta</ion-label>
+              <ion-input [(ngModel)]="respuestaSecreta" placeholder="Ingrese su respuesta secreta"></ion-input>
+            </ion-item>
+          </ion-card>
+          <br>
+          <ion-card>
+            <ion-button expand="full" (click)="comprobarRespuesta(respuestaSecreta)">Verificar Respuesta</ion-button>
+          </ion-card>
+        </ion-label>
+
+        <ion-label>
+          <br>
+          <a (click)="volverIngreso()">Iniciar sesion</a>
+        </ion-label>
+      </div>
+
     </div>
-  </div>
-</ion-content>
+  </ion-content>
+</div>
